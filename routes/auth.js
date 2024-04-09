@@ -8,9 +8,9 @@ const authController = require("../controller/auth");
 const upload = multer({ dest: "./util/images" });
 
 router.get("/", authController.getUsers);
-router.post("/", upload.single("file"), authController.something);
-router.post("/signup", upload.single("file"), authController.userSignup);
-router.post("/board", upload.single("file"), authController.boardSignup);
+router.post("/", upload.single("image"), authController.something);
+router.post("/signup", upload.single("image"), authController.userSignup);
+router.post("/board", upload.single("image"), authController.boardSignup);
 router.post(
   "/signin",
   [
