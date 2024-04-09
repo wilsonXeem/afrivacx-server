@@ -28,7 +28,7 @@ module.exports.userSignup = async (req, res, next) => {
     address = req.body.address,
     position = req.body.position,
     zone = req.body.zone,
-    title = req.body.title;
+    title = req.body.title, file=req.file;
 
   try {
     // Check if a email already exist
@@ -37,8 +37,8 @@ module.exports.userSignup = async (req, res, next) => {
       error.errorHandler(res, "email already exists", "email");
     } else {
       let imageUrl, imageId;
-      if (req.file) {
-        const uploadedImage = await uploadImage(res, req.file.path);
+      if (file) {
+        const uploadedImage = await uploadImage(res, file.path);
         imageUrl = uploadedImage.imageUrl;
         imageId = uploadedImage.imageId;
       }
