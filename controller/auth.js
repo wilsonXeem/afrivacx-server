@@ -342,7 +342,7 @@ module.exports.something = async (req, res, next) => {
     // Send response back to client
     res
       .status(201)
-      .json({ message: "image uploaded successfully", image:{imageUrl, imageId});
+      .json({ message: "image uploaded successfully");
   } catch (err) {
     error.error(err, next);
   }
