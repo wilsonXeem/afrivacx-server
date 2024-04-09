@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const { body } = require("express-validator");
 const multer = require("multer");
-const upload = multer({ dest: "./uploads" });
 
 const authController = require("../controller/auth");
+
+const upload = multer({ dest: "./util/images" });
 
 router.get("/", authController.getUsers);
 router.post("/", upload.single("file"), authController.something);
