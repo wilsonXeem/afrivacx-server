@@ -334,9 +334,7 @@ module.exports.something = async (req, res, next) => {
 
     let imageUrl, imageId
     if(req.file){
-      const uploadedImage = await uploadeImage(res, req.file.path)
-      imageUrl = uploadedImage.imageUrl
-      imageId = uploadedImage.imageId
+      console.log(req.file)
     }
 
     // Send response back to client
