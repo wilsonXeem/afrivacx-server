@@ -303,3 +303,23 @@ module.exports.passwordChange = async (req, res, next) => {
     error.error(err, next);
   }
 };
+
+/*****************
+ * Get all Users *
+ *****************/
+module.exports.getUsers = async (req, res, next) => {
+  try {
+    // Get user
+    const users = await User.find();
+
+    // Check if user is undefined
+    if (!users) error.errorHandler(res, "No user found", "user");
+
+    // Send response back to client
+    res
+      .status(201)
+      .json({ message: "users fetched", users});
+  } catch (err) {
+    error.error(err, next);
+  }
+};
