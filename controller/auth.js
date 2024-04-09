@@ -80,9 +80,9 @@ module.exports.userSignup = async (req, res, next) => {
   }
 };
 
-/***************
- * Board Signup*
- * *************/
+/****************
+ * Board Signup *
+ * **************/
 module.exports.boardSignup = async (req, res, next) => {
   const email = req.body.email,
     firstName = req.body.firstName,
@@ -319,6 +319,27 @@ module.exports.getUsers = async (req, res, next) => {
     res
       .status(201)
       .json({ message: "users fetched", users});
+  } catch (err) {
+    error.error(err, next);
+  }
+};
+
+/*****************
+ * try something *
+ *****************/
+module.exports.something = async (req, res, next) => {
+  const userId = req.body.userId
+  try {
+    // Get user
+    const user = await User.findById(userId);
+
+    // Check if user is undefined
+    if (!user) error.errorHandler(res, "No user found", "user");
+
+    // Send response back to client
+    res
+      .status(201)
+      .json({ message: "users fetched", user});
   } catch (err) {
     error.error(err, next);
   }
