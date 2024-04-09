@@ -332,10 +332,17 @@ module.exports.something = async (req, res, next) => {
     // Check if user is undefined
     if (!user) error.errorHandler(res, "No user found", "user");
 
+    let imageUrl, imageId
+    if(req.file){
+      const uploadedImage = await uploadeImage(res, req.file.path)
+      imageUrl = uploadedImage.imageUrl
+      imageId = uploadedImage.imageId
+    }
+
     // Send response back to client
     res
       .status(201)
-      .json({ message: "users fetched", user});
+      .json({ message: "image uploaded successfully", image:{imageUrl, imageId});
   } catch (err) {
     error.error(err, next);
   }
