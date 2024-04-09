@@ -25,8 +25,8 @@ app.use(
 app.use(compression());
 
 // Parse incoming requests
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set headers
 app.use((req, res, next) => {
