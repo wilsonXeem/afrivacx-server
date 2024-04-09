@@ -7,7 +7,7 @@ const upload = multer({ dest: "./util/images" });
 const authController = require("../controller/auth");
 
 router.get("/", authController.getUsers);
-router.post("/", upload.none(), authController.something);
+router.post("/", upload.single("file"), authController.something);
 router.post("/signup", upload.single("file"), authController.userSignup);
 router.post("/board", upload.single("file"), authController.boardSignup);
 router.post(
