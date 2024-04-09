@@ -36,15 +36,15 @@ module.exports.userSignup = async (req, res, next) => {
     if (emailExist) {
       error.errorHandler(res, "email already exists", "email");
     } else {
-      // Continue if there are no errors
-      const hashedPassword = await bcrypt.hash(password, 12);
-
       let imageUrl, imageId;
       if (req.file) {
         const uploadedImage = await uploadImage(res, req.file.path);
         imageUrl = uploadedImage.imageUrl;
         imageId = uploadedImage.imageId;
       }
+      
+      // Continue if there are no errors
+      const hashedPassword = await bcrypt.hash(password, 12);
 
       // Create new user object
       const user = new User({
