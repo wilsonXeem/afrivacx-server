@@ -31,10 +31,6 @@ module.exports.userSignup = async (req, res, next) => {
     title = req.body.title;
 
   try {
-    // Check for validation errors
-    const validatorErrors = validationResult(req);
-    error.validationError(validatorErrors, res);
-
     // Check if a email already exist
     const emailExist = await userExists("email", email);
     if (emailExist) {
